@@ -2,26 +2,184 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+ 
+ 
+
+@import url("https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Hide scrollbar for Chrome, Safari, and Opera */
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width:  0px;
 }
 
+::-webkit-scrollbar-thumb { 
+  background-color: #8a99ee;
+}
+
+/* For Firefox */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  scrollbar-width:  0px;
+  scrollbar-color: #0b1930;
+  color: white;
+  /* thumb color */
+  scrollbar-track-color: grey;
+  /* track color */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 700;
+  color: #0b1930;
+}
+
+h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 64px;
+  color: #0b1930;
+}
+
+h3 {
+  font-family: "Nunito", sans-serif;
+  font-size: 40px;
+  line-height: 48px;
+  color: #0b1930;
+}
+
+h4 {
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  color: #0b1930;
+}
+
+h5 {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #0b1930;
+}
+
+.tagline {
+  font-family: "Arsenal SC", sans-serif;
+  font-size: 26px;
+  line-height: 48px;
+}
+
+.caption {
+  font-family: "Arsenal SC", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body {
+  font-family: "Arsenal SC", sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-family: "Nunito", sans-serif;
+    font-size: 48px;
+    line-height: 56px;
+    color: #0b1930;
+  }
+
+  h2 {
+    font-family: "Nunito", sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    color: #0b1930;
+  }
+
+  h3 {
+    font-family: "Nunito", sans-serif;
+    font-size: 24px;
+    line-height: 32px;
+    color: #0b1930;
+  }
+
+  h4 {
+    font-family: "Nunito", sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    color: #0b1930;
+  }
+
+  h5 {
+    font-family: "Nunito", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #0b1930;
+  }
+
+  .tagline {
+    font-family: "Arsenal SC", sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .caption {
+    font-family: "Arsenal SC", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .body {
+    font-family: "Arsenal SC", sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .primaryColor {
+    background-color: #11112B;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
 }
+
+@layer components {
+  .app-layout {
+    @apply w-[90%] max-w-[1440px] mx-auto;
+  }
+}
+
+/* body {
+  background-attachment: fixed;
+  background-image: url("/pattern.png");
+}
+  */
