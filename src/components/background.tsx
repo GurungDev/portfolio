@@ -9,7 +9,7 @@ import {
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
-export const HeroSection = () => {
+export const Background = () => {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -486,7 +486,7 @@ export const HeroSection = () => {
   );
 
   return (
-    <section className=" ">
+    <section className=" relative z-[-100]">
       {init && (
         <Particles options={options} particlesLoaded={particlesLoaded} />
       )}

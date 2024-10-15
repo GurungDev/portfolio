@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
+import MouseCursor from "@/components/mouseCursoe";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "NGR",
@@ -14,7 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={``}>{children}</body>
+      <body className={``}>
+        <Navbar/>
+        {children}
+        <MouseCursor/>
+      </body>
     </html>
   );
 }

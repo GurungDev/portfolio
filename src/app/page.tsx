@@ -1,11 +1,12 @@
-import { HeroSection } from "@/components/homepage/heroSection";
+import { Background } from "@/components/background";
+import LandingSection from "@/components/landingSection";
 
 export default function Home() {
   return (
     <div>
-      <div className="relative z-[-100]">
-        <HeroSection />
-      </div>
+      
+      <LandingSection />
+      <Background />
     </div>
   );
 }
