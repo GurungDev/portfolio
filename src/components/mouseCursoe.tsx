@@ -15,15 +15,16 @@ const MouseCursor = () => {
   }, []);
   const variants = {
     default: {
-      x: mousePosition.x-20,
-      y: mousePosition.y-20,
+      x: mousePosition.x - 20,
+      y: mousePosition.y - 20,
     },
   };
   return (
     <motion.div
-      className="cursor"
+      className="cursor bg-black bg-opacity-[10%]"
       variants={variants}
       animate={"default"}
+      whileTap={{ scale: 1.5 }}
     ></motion.div>
   );
 };

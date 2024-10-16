@@ -1,8 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Permanent+Marker&family=Quicksand:wght@300..700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Quicksand:wght@300..700&display=swap");
 
 * {
   margin: 0;
@@ -29,12 +28,38 @@ html {
   scroll-behavior: smooth;
 }
 
+.c1 {
+  font-family: "Edu AU VIC WA NT Guides", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.c2 {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.c3 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.c4 {
+  font-family: "Quicksand", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", serif;
   color: #0b1930;
 }
 
@@ -141,9 +166,9 @@ body {
 }
 
 .cursor {
-  background-color: #11112b;
-  width: 50px;
-  height: 50px;
+  border: 3px solid black;
+  width: 30px;
+  height: 30px;
   top: 0;
   border-radius: 50%;
   position: fixed;
@@ -151,5 +176,14 @@ body {
 
 .custom-border {
   border-radius: 100% 0% 100% 0% / 100% 49% 51% 0%;
-  
+}
+
+.custom-border2 {
+  border-radius: 0% 100% 56% 44% / 3% 49% 51% 97%;
+}
+
+.morphism {
+  border-radius: 50px;
+  background: linear-gradient(145deg, #cfcfcf, #f6f6f6);
+  box-shadow: 26px 26px 52px #c4c4c4, -26px -26px 52px #ffffff;
 }

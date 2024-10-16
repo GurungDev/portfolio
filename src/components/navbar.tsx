@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="flex justify-between app-layout">
           <div className="group relative ">
             {" "}
-            <h3 className="group-hover:text-white text-red-400 duration-300 font-[600]">
+            <h3 className="custom-border2  group-hover:text-white text-red-400 duration-300 font-[600]">
               NGr
               <span className="text-neutral-700 group-hover:text-white duration-300 ">
                 .
@@ -27,42 +27,42 @@ const Navbar = () => {
             <ul>
   <li className="py-[.5]">
     <Link href="#home" className="group/menu flex items-center gap-5">
-      <div className="group-hover/menu:w-[20%] w-[0%] h-[2px] bg-white duration-300"></div>
+      <div className="group-hover/menu:w-[20%] w-[5%] h-[2px] bg-white duration-300"></div>
       <p className="text-white hover:translate-x-[10px] transition duration-300">Home</p>
     </Link>
   </li>
 
   <li className="py-[.5]">
     <Link href="#about" className="group/menu flex items-center gap-5">
-      <div className="group-hover/menu:w-[20%] w-[0%] h-[2px] bg-white duration-300"></div>
+      <div className="group-hover/menu:w-[20%] w-[5%] h-[2px] bg-white duration-300"></div>
       <p className="text-white hover:translate-x-[10px] transition duration-300">About</p>
     </Link>
   </li>
 
   <li className="py-[.5]">
     <Link href="#services" className="group/menu flex items-center gap-5">
-      <div className="group-hover/menu:w-[20%] w-[0%] h-[2px] bg-white duration-300"></div>
+      <div className="group-hover/menu:w-[20%] w-[5%] h-[2px] bg-white duration-300"></div>
       <p className="text-white hover:translate-x-[10px] transition duration-300">Services</p>
     </Link>
   </li>
 
   <li className="py-[.5]">
     <Link href="#experience" className="group/menu flex items-center gap-5">
-      <div className="group-hover/menu:w-[20%] w-[0%] h-[2px] bg-white duration-300"></div>
+      <div className="group-hover/menu:w-[20%] w-[5%] h-[2px] bg-white duration-300"></div>
       <p className="text-white hover:translate-x-[10px] transition duration-300">Experience</p>
     </Link>
   </li>
 
   <li className="py-[.5]">
     <Link href="#projects" className="group/menu flex items-center gap-5">
-      <div className="group-hover/menu:w-[20%] w-[0%] h-[2px] bg-white duration-300"></div>
+      <div className="group-hover/menu:w-[20%] w-[5%] h-[2px] bg-white duration-300"></div>
       <p className="text-white hover:translate-x-[10px] transition duration-300">Projects</p>
     </Link>
   </li>
 
   <li className="py-[.5]">
     <Link href="#contact" className="group/menu flex items-center gap-5">
-      <div className="group-hover/menu:w-[20%] w-[0%] h-[2px] bg-white duration-300"></div>
+      <div className="group-hover/menu:w-[20%] w-[5%] h-[2px] bg-white duration-300"></div>
       <p className="text-white hover:translate-x-[10px] transition duration-300">Contact</p>
     </Link>
   </li>
