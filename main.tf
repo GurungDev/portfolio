@@ -4,6 +4,12 @@ resource "google_compute_network" "vpc_network" {
   name                    = var.vpc_name
   auto_create_subnetworks = var.vpc_auto_create_subnets
   mtu                     = var.vpc_mtu
+
+
+  lifecycle {
+    ignore_changes = [name]
+  }
+
 }
 
 // Creates a VPC subnetwork
@@ -12,6 +18,9 @@ resource "google_compute_subnetwork" "vpc_network_subnet" {
   ip_cidr_range = var.vpc_subnet_cidr_range
   region        = var.vpc_subnet_region
   network       = google_compute_network.vpc_network.id
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 // Add ICMP firewall rule
@@ -24,6 +33,9 @@ resource "google_compute_firewall" "vpc_firewall_icmp" {
   }
 
   source_ranges = var.vpc_firewall_icmp_source_range
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 // Adds a custom firewall rule
@@ -36,6 +48,9 @@ resource "google_compute_firewall" "vpc_firewall_custom" {
   }
 
   source_ranges = var.vpc_firewall_custom_source_range
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 // Adds a ssh firewall rule
@@ -49,6 +64,9 @@ resource "google_compute_firewall" "vpc_firewall_ssh" {
   }
 
   source_ranges = var.vpc_firewall_ssh_source_range
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 // Adds a rdp firewall rule
@@ -62,6 +80,10 @@ resource "google_compute_firewall" "vpc_firewall_rdp" {
   }
 
   source_ranges = var.vpc_firewall_rdp_source_range
+
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 // Allow internal GKE communication
 resource "google_compute_firewall" "allow_internal_gke" {
@@ -74,6 +96,9 @@ resource "google_compute_firewall" "allow_internal_gke" {
   }
 
   source_ranges = ["10.0.1.0/24"] 
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 resource "google_compute_firewall" "allow_ssh" {
@@ -87,6 +112,9 @@ resource "google_compute_firewall" "allow_ssh" {
 
   source_ranges = ["0.0.0.0/0"] 
   target_tags   = ["gke-node"]
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 # GKE Cluster Resource
 resource "google_container_cluster" "primary" {
@@ -109,6 +137,9 @@ resource "google_container_cluster" "primary" {
       display_name = "global"
     }
   }
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 # GKE Node Pool Resource
@@ -123,6 +154,9 @@ resource "google_container_node_pool" "primary_nodes" {
     service_account = var.gke_service_account_email
     oauth_scopes   = ["https://www.googleapis.com/auth/cloud-platform"]
     tags           = ["gke-node"]  # This should match firewall rules with 'gke-node' target tags
+  }
+  lifecycle {
+    ignore_changes = [name]
   }
 }
 
