@@ -24,6 +24,10 @@ jobs:
           project_id: "concepts-demo"
           credentials_json: ${{ secrets.NG_SA_KEY_GCLOUD }}
 
+      # Configure Docker to Authenticate with GCR
+      - name: Configure Docker to Authenticate with GCR
+        run: gcloud auth configure-docker
+        
       # Set the Google Cloud project dynamically from the service account credentials
       - name: Get Google Cloud Project ID
         id: gcp-project-id
