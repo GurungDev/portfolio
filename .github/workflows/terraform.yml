@@ -1,0 +1,67 @@
+name: Terraform CI/CD
+
+## Github Actions
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: Terraform Plan, Apply, and Destroy
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: "google-github-actions/auth@v2"
+        with:
+          project_id: "concepts-demo"
+          credentials_json: ${{ secrets.NG_SA_KEY_GCLOUD }}
+
+      # Set the Google Cloud project dynamically from the service account credentials
+      - name: Get Google Cloud Project ID
+        id: gcp-project-id
+        run: |
+          PROJECT_ID=$(gcloud config get-value project)
+          echo "GCP_PROJECT_ID=${PROJECT_ID}" >> $GITHUB_ENV
+
+      # Build and Push Docker Image
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t portfolio-nextjs:latest .
+          docker tag portfolio-nextjs:latest gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
+          docker push gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
+
+      # Setup Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.9.8
+
+      # Terraform init
+      - name: Initialize Terraform
+        run: terraform init
+
+      # Terraform plan
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      # Terraform apply (Only on push events to main)
+      - name: Terraform Apply
+        if: github.event_name == 'push'
+        run: terraform apply -auto-approve tfplan
+
+      # Wait for 1 minute
+      - name: Wait for 20 minute
+        run: sleep 3600
+
+      # Terraform destroy
+      - name: Terraform Destroy
+        if: github.event_name == 'push'
+        run: terraform destroy -auto-approve

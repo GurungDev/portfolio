@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.DS_Store
+.terraform.lock.hcl
+kubeconfig*
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+gcp-ar-key.json
