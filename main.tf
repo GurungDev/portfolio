@@ -206,3 +206,5 @@ resource "kubernetes_service" "nextjs_service" {
   }
 }
 
+#
+
