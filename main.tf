@@ -176,7 +176,7 @@ resource "kubernetes_deployment" "nextjs_deployment" {
       spec {
         container {
           name  = "nextjs-container"
-          image = "gcr.io/${data.google_client_config.default.project}/protfolio-nextjs:latest"  
+          image = "gcr.io/${data.google_client_config.default.project}/portfolio-nextjs:latest"  
           port {
               container_port = 3000
             }
@@ -194,7 +194,7 @@ resource "kubernetes_service" "nextjs_service" {
 
   spec {
     selector = {
-      app = "protfolio-nextjs"
+      app = "portfolio-nextjs"
     }
 
     type = "LoadBalancer"
