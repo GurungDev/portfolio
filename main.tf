@@ -1,30 +1,39 @@
+# Check for existing VPC
+data "google_compute_network" "existing_vpc" {
+  name = var.vpc_name
+}
 
-// Creates a VPC
 resource "google_compute_network" "vpc_network" {
+  count = length(data.google_compute_network.existing_vpc.self_link) == 0 ? 1 : 0
+
   name                    = var.vpc_name
   auto_create_subnetworks = var.vpc_auto_create_subnets
   mtu                     = var.vpc_mtu
-
-
-  lifecycle {
-    ignore_changes = [name]
-  }
-
 }
 
-// Creates a VPC subnetwork
+# Check for existing Subnet
+data "google_compute_subnetwork" "existing_subnet" {
+  name   = var.vpc_subnet_name
+  region = var.vpc_subnet_region
+}
+
 resource "google_compute_subnetwork" "vpc_network_subnet" {
+  count = length(data.google_compute_subnetwork.existing_subnet.self_link) == 0 ? 1 : 0
+
   name          = var.vpc_subnet_name
   ip_cidr_range = var.vpc_subnet_cidr_range
   region        = var.vpc_subnet_region
-  network       = google_compute_network.vpc_network.id
-  lifecycle {
-    ignore_changes = [name]
-  }
+  network       = google_compute_network.vpc_network.self_link
 }
 
-// Add ICMP firewall rule
+# Check for existing Firewall
+data "google_compute_firewall" "existing_firewall_icmp" {
+  name = var.vpc_firewall_icmp_name
+}
+
 resource "google_compute_firewall" "vpc_firewall_icmp" {
+  count = length(data.google_compute_firewall.existing_firewall_icmp.self_link) == 0 ? 1 : 0
+
   name    = var.vpc_firewall_icmp_name
   network = google_compute_network.vpc_network.self_link
 
@@ -33,28 +42,17 @@ resource "google_compute_firewall" "vpc_firewall_icmp" {
   }
 
   source_ranges = var.vpc_firewall_icmp_source_range
-  lifecycle {
-    ignore_changes = [name]
-  }
 }
 
-// Adds a custom firewall rule
-resource "google_compute_firewall" "vpc_firewall_custom" {
-  name    = var.vpc_firewall_custom_name
-  network = google_compute_network.vpc_network.self_link
-
-  allow {
-    protocol = var.vpc_firewall_custom_protocol
-  }
-
-  source_ranges = var.vpc_firewall_custom_source_range
-  lifecycle {
-    ignore_changes = [name]
-  }
+# Repeat this pattern for other firewall rules
+# Example for SSH Firewall
+data "google_compute_firewall" "existing_firewall_ssh" {
+  name = var.vpc_firewall_ssh_name
 }
 
-// Adds a ssh firewall rule
 resource "google_compute_firewall" "vpc_firewall_ssh" {
+  count = length(data.google_compute_firewall.existing_firewall_ssh.self_link) == 0 ? 1 : 0
+
   name    = var.vpc_firewall_ssh_name
   network = google_compute_network.vpc_network.self_link
 
@@ -64,131 +62,70 @@ resource "google_compute_firewall" "vpc_firewall_ssh" {
   }
 
   source_ranges = var.vpc_firewall_ssh_source_range
-  lifecycle {
-    ignore_changes = [name]
-  }
 }
 
-// Adds a rdp firewall rule
-resource "google_compute_firewall" "vpc_firewall_rdp" {
-  name    = var.vpc_firewall_rdp_name
-  network = google_compute_network.vpc_network.self_link
-
-  allow {
-    protocol = var.vpc_firewall_rdp_protocol
-    ports    = var.vpc_firewall_rdp_port
-  }
-
-  source_ranges = var.vpc_firewall_rdp_source_range
-
-  lifecycle {
-    ignore_changes = [name]
-  }
-}
-// Allow internal GKE communication
-resource "google_compute_firewall" "allow_internal_gke" {
-  name    = "allow-internal-gke"
-  network = google_compute_network.vpc_network.self_link
-
-  allow {
-    protocol = "tcp"
-    ports    = ["0-65535"]
-  }
-
-  source_ranges = ["10.0.1.0/24"] 
-  lifecycle {
-    ignore_changes = [name]
-  }
+# Check for existing GKE Cluster
+data "google_container_cluster" "existing_cluster" {
+  name     = var.gke_cluster_name
+  location = var.gke_location
 }
 
-resource "google_compute_firewall" "allow_ssh" {
-  name    = "allow-ssh"
-  network = google_compute_network.vpc_network.self_link
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
-
-  source_ranges = ["0.0.0.0/0"] 
-  target_tags   = ["gke-node"]
-  lifecycle {
-    ignore_changes = [name]
-  }
-}
-# GKE Cluster Resource
 resource "google_container_cluster" "primary" {
+  count = length(data.google_container_cluster.existing_cluster.name) == 0 ? 1 : 0
+
   name       = var.gke_cluster_name
   location   = var.gke_location
   network    = google_compute_network.vpc_network.self_link
   subnetwork = google_compute_subnetwork.vpc_network_subnet.self_link
-  deletion_protection = false
-  # Disables default node pool since we'll create a custom one
+
+  deletion_protection      = false
   remove_default_node_pool = true
   initial_node_count       = 1
-
-  # Enables alias IP ranges for Pod IPs
-  ip_allocation_policy {}
-
-  # Optional: Restrict access to the master using authorized networks
-  master_authorized_networks_config {
-    cidr_blocks {
-      cidr_block   = "0.0.0.0/0" 
-      display_name = "global"
-    }
-  }
-  lifecycle {
-    ignore_changes = [name]
-  }
 }
 
-# GKE Node Pool Resource
-resource "google_container_node_pool" "primary_nodes" {
-  cluster    = google_container_cluster.primary.name
-  location   = var.gke_location
-  node_count = var.gke_node_count
+# # Check for existing Kubernetes Namespace
+# data "kubernetes_namespace" "existing_namespace" {
+#   metadata {
+#     name = "argocd"
+#   }
+# }
 
-  # Node configuration
-  node_config {
-    machine_type   = var.gke_node_machine_type
-    service_account = var.gke_service_account_email
-    oauth_scopes   = ["https://www.googleapis.com/auth/cloud-platform"]
-    tags           = ["gke-node"]  # This should match firewall rules with 'gke-node' target tags
-  }
-  lifecycle {
-    ignore_changes = [name]
-  }
-}
+# resource "kubernetes_namespace" "argocd" {
+#   count = length(data.kubernetes_namespace.existing_namespace.metadata.0.name) == 0 ? 1 : 0
 
+#   metadata {
+#     name = "argocd"
+#   }
+# }
 
+# # Check for existing Helm Release
+# data "helm_release" "existing_argocd" {
+#   name      = "argocd"
+#   namespace = "argocd"
+# }
 
-output "kubeconfig" {
-  value = google_container_cluster.primary.endpoint
-}
+# resource "helm_release" "argocd" {
+#   count = length(data.helm_release.existing_argocd.name) == 0 ? 1 : 0
 
-resource "kubernetes_namespace" "argocd" {
+#   name       = "argocd"
+#   namespace  = kubernetes_namespace.argocd.metadata[0].name
+#   repository = "https://argoproj.github.io/argo-helm"
+#   chart      = "argo-cd"
+#   version    = "5.12.0"
+# }
+
+# Check for existing Kubernetes Deployment
+data "kubernetes_deployment" "existing_nextjs_deployment" {
   metadata {
-    name = "argocd"
+    name = "portfolio-nextjs"
   }
 }
-
-resource "helm_release" "argocd" {
-  name       = "argocd"
-  namespace  = kubernetes_namespace.argocd.metadata[0].name
-  repository = "https://argoproj.github.io/argo-helm"
-  chart      = "argo-cd"
-  version    = "5.12.0"  
-}
-
-
-output "argocd_server_url" {
-  value = "https://${helm_release.argocd.name}-server.${kubernetes_namespace.argocd.metadata[0].name}.svc.cluster.local"
-}
-
 
 resource "kubernetes_deployment" "nextjs_deployment" {
+  count = length(data.kubernetes_deployment.existing_nextjs_deployment.metadata.0.name) == 0 ? 1 : 0
+
   metadata {
-    name = "protfolio-nextjs"
+    name = "portfolio-nextjs"
   }
 
   spec {
@@ -196,24 +133,24 @@ resource "kubernetes_deployment" "nextjs_deployment" {
 
     selector {
       match_labels = {
-        app = "protfolio-nextjs"
+        app = "portfolio-nextjs"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "protfolio-nextjs"
+          app = "portfolio-nextjs"
         }
       }
 
       spec {
         container {
           name  = "nextjs-container"
-          image = "gcr.io/${data.google_client_config.default.project}/portfolio-nextjs:latest"  
+          image = "gcr.io/${data.google_client_config.default.project}/portfolio-nextjs:latest"
           port {
-              container_port = 3000
-            }
+            container_port = 3000
+          }
         }
       }
     }
