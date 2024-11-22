@@ -153,59 +153,67 @@ output "kubeconfig" {
 # }
 
 
-resource "kubernetes_deployment" "nextjs_deployment" {
-  metadata {
-    name = "protfolio-nextjs"
-  }
+# resource "kubernetes_deployment" "nextjs_deployment" {
+#   metadata {
+#     name = "portfolio-nextjs"
+#   }
 
-  spec {
-    replicas = 1
+#   spec {
+#     replicas = 1
 
-    selector {
-      match_labels = {
-        app = "protfolio-nextjs"
-      }
-    }
+#     selector {
+#       match_labels = {
+#         app = "portfolio-nextjs"
+#       }
+#     }
 
-    template {
-      metadata {
-        labels = {
-          app = "protfolio-nextjs"
-        }
-      }
+#     template {
+#       metadata {
+#         labels = {
+#           app = "portfolio-nextjs"
+#         }
+#       }
 
-      spec {
-        container {
-          name  = "nextjs-container"
-          image = "gcr.io/${data.google_client_config.default.project}/portfolio-nextjs:latest"  
-          port {
-              container_port = 3000
-            }
-        }
-      }
-    }
-  }
+#       spec {
+#         container {
+#           name  = "nextjs-container"
+#           image = "gcr.io/${data.google_client_config.default.project}/portfolio-nextjs:latest"  
+#           port {
+#               container_port = 3000
+#             }
+#         }
+#       }
+#     }
+#   }
+# }
+
+
+# resource "kubernetes_service" "nextjs_service" {
+#   metadata {
+#     name = "nextjs-service"
+#   }
+
+#   spec {
+#     selector = {
+#       app = "portfolio-nextjs"
+#     }
+
+#     type = "LoadBalancer"
+
+#     port {
+#       port        = 80
+#       target_port = 3000
+#     }
+#   }
+# }
+
+# #
+resource "kubernetes_manifest" "portfolio_nextjs_deployment" {
+  manifest = yamldecode(file("${path.module}/k8s/deployment.yaml"))
 }
 
-
-resource "kubernetes_service" "nextjs_service" {
-  metadata {
-    name = "nextjs-service"
-  }
-
-  spec {
-    selector = {
-      app = "portfolio-nextjs"
-    }
-
-    type = "LoadBalancer"
-
-    port {
-      port        = 80
-      target_port = 3000
-    }
-  }
+resource "kubernetes_manifest" "portfolio_nextjs_service" {
+  manifest = yamldecode(file("${path.module}/k8s/service.yaml"))
 }
 
-#
 

@@ -63,7 +63,7 @@ jobs:
 
       # Wait for 1 minute
       - name: Wait for 20 minute
-        run: sleep 3600
+        run: sleep 1000
 
       # Terraform destroy
       - name: Terraform Destroy
