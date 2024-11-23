@@ -28,12 +28,21 @@ jobs:
       - name: Configure Docker to Authenticate with GCR
         run: gcloud auth configure-docker
 
-      # Set the Google Cloud project dynamically from the service account credentials
-      - name: Get Google Cloud Project ID
-        id: gcp-project-id
+    # Set the Google Cloud project, region, and cluster dynamically from the service account credentials
+      - name: Get Google Cloud Project ID, Region, and Cluster
+        id: gcp-info
         run: |
+          # Get the current project ID
           PROJECT_ID=$(gcloud config get-value project)
+          
+          # Get the region and cluster name from GKE (replace with your cluster names/regions if needed)
+          GKE_CLUSTER_NAME=$(gcloud container clusters list --format="value(name)" --limit 1)
+          GKE_REGION=$(gcloud container clusters describe ${GKE_CLUSTER_NAME} --format="value(location)")
+
+          # Output the values
           echo "GCP_PROJECT_ID=${PROJECT_ID}" >> $GITHUB_ENV
+          echo "GKE_CLUSTER_NAME=${GKE_CLUSTER_NAME}" >> $GITHUB_ENV
+          echo "GKE_REGION=${GKE_REGION}" >> $GITHUB_ENV
 
       # Build and Push Docker Image
       - name: Build and Push Docker Image
@@ -41,6 +50,21 @@ jobs:
           docker build -t portfolio-nextjs:latest .
           docker tag portfolio-nextjs:latest gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
           docker push gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
+
+      # Set up GKE kubeconfig dynamically
+      - name: Set up GKE kubeconfig
+        run: |
+          gcloud container clusters get-credentials ${{env.GKE_CLUSTER_NAME}} --region ${{env.GKE_REGION}} --project ${{env.GCP_PROJECT_ID}}
+
+      # Set KUBECONFIG environment variable so Terraform can access the kubeconfig
+      - name: Set KUBECONFIG environment variable
+        run: echo "KUBECONFIG=${HOME}/.kube/config" >> $GITHUB_ENV
+
+      # Verify kubectl access to the cluster
+      - name: Verify kubectl access to the cluster
+        run: |
+          kubectl config current-context
+          kubectl get nodes
 
       # Setup Terraform CLI
       - name: Setup Terraform
