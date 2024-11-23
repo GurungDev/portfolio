@@ -167,7 +167,7 @@ resource "kubernetes_manifest" "argocd_portfolio_nextjs_app" {
             path: "k8s"
             targetRevision: "main"  # Branch name
           destination:
-            server: "https://kubernetes.default.svc"
+            server: "https://${google_container_cluster.primary.endpoint}"
             namespace: argocd
           syncPolicy:
             automated:

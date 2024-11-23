@@ -35,20 +35,6 @@ jobs:
           docker tag portfolio-nextjs:latest gcr.io/concepts-demo/portfolio-nextjs:latest
           docker push gcr.io/concepts-demo/portfolio-nextjs:latest
 
-      # Set up GKE kubeconfig dynamically
-      - name: Set up GKE kubeconfig
-        run: gcloud container clusters get-credentials agrocd --zone europe-west2 --project concepts-demo
-
-      # Set KUBECONFIG environment variable so Terraform can access the kubeconfig
-      - name: Set KUBECONFIG environment variable
-        run: echo "KUBECONFIG=${HOME}/.kube/config" >> $GITHUB_ENV
-
-      # Verify kubectl access to the cluster
-      - name: Verify kubectl access to the cluster
-        run: |
-          kubectl config current-context
-          kubectl get nodes
-
       # Setup Terraform CLI
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
