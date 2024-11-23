@@ -4,7 +4,7 @@ resource "google_compute_network" "vpc_network" {
   name                    = var.vpc_name
   auto_create_subnetworks = var.vpc_auto_create_subnets
   mtu                     = var.vpc_mtu
-  
+
 }
 
 // Creates a VPC subnetwork
@@ -74,7 +74,7 @@ resource "google_compute_firewall" "allow_internal_gke" {
     ports    = ["0-65535"]
   }
 
-  source_ranges = ["10.0.1.0/24"] 
+  source_ranges = ["10.0.1.0/24"]
 }
 
 resource "google_compute_firewall" "allow_ssh" {
@@ -86,15 +86,15 @@ resource "google_compute_firewall" "allow_ssh" {
     ports    = ["22"]
   }
 
-  source_ranges = ["0.0.0.0/0"] 
+  source_ranges = ["0.0.0.0/0"]
   target_tags   = ["gke-node"]
 }
 # GKE Cluster Resource
 resource "google_container_cluster" "primary" {
-  name       = var.gke_cluster_name
-  location   = var.gke_location
-  network    = google_compute_network.vpc_network.self_link
-  subnetwork = google_compute_subnetwork.vpc_network_subnet.self_link
+  name                = var.gke_cluster_name
+  location            = var.gke_location
+  network             = google_compute_network.vpc_network.self_link
+  subnetwork          = google_compute_subnetwork.vpc_network_subnet.self_link
   deletion_protection = false
   # Disables default node pool since we'll create a custom one
   remove_default_node_pool = true
@@ -106,7 +106,7 @@ resource "google_container_cluster" "primary" {
   # Optional: Restrict access to the master using authorized networks
   master_authorized_networks_config {
     cidr_blocks {
-      cidr_block   = "0.0.0.0/0" 
+      cidr_block   = "0.0.0.0/0"
       display_name = "global"
     }
   }
@@ -120,10 +120,10 @@ resource "google_container_node_pool" "primary_nodes" {
 
   # Node configuration
   node_config {
-    machine_type   = var.gke_node_machine_type
+    machine_type    = var.gke_node_machine_type
     service_account = var.gke_service_account_email
-    oauth_scopes   = ["https://www.googleapis.com/auth/cloud-platform"]
-    tags           = ["gke-node"]  # This should match firewall rules with 'gke-node' target tags
+    oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
+    tags            = ["gke-node"] # This should match firewall rules with 'gke-node' target tags
   }
 }
 
@@ -208,9 +208,9 @@ output "kubeconfig" {
 # }
 
 resource "kubectl_manifest" "portfolio_nextjs_deployment" {
-  yaml_body = yamldecode(file("${path.module}/k8s/deployment.yaml"))
+  yaml_body = file("${path.module}/k8s/deployment.yaml")
 }
 
 resource "kubectl_manifest" "portfolio_nextjs_service" {
-  yaml_body = yamldecode(file("${path.module}/k8s/service.yaml"))
+  yaml_body = file("${path.module}/k8s/service.yaml")
 }
