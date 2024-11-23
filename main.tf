@@ -207,10 +207,10 @@ output "kubeconfig" {
 #   }
 # }
 
-resource "kubernetes_manifest" "portfolio_nextjs_deployment" {
-  manifest = yamldecode(file("${path.module}/k8s/deployment.yaml"))
+resource "kubectl_manifest" "portfolio_nextjs_deployment" {
+  yaml_body = yamldecode(file("${path.module}/k8s/deployment.yaml"))
 }
 
-resource "kubernetes_manifest" "portfolio_nextjs_service" {
-  manifest = yamldecode(file("${path.module}/k8s/service.yaml"))
+resource "kubectl_manifest" "portfolio_nextjs_service" {
+  yaml_body = yamldecode(file("${path.module}/k8s/service.yaml"))
 }

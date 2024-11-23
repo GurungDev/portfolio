@@ -35,12 +35,12 @@ jobs:
           PROJECT_ID=$(gcloud config get-value project)
           echo "GCP_PROJECT_ID=${PROJECT_ID}" >> $GITHUB_ENV
 
-      # Build and Push Docker Image
-      - name: Build and Push Docker Image
-        run: |
-          docker build -t portfolio-nextjs:latest .
-          docker tag portfolio-nextjs:latest gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
-          docker push gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
+      # # Build and Push Docker Image
+      # - name: Build and Push Docker Image
+      #   run: |
+      #     docker build -t portfolio-nextjs:latest .
+      #     docker tag portfolio-nextjs:latest gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
+      #     docker push gcr.io/${{ env.GCP_PROJECT_ID }}/portfolio-nextjs:latest
 
       # Setup Terraform CLI
       - name: Setup Terraform
