@@ -208,9 +208,9 @@ output "kubeconfig" {
 # }
 
 resource "kubernetes_manifest" "portfolio_nextjs_deployment" {
-  manifest = yamldecode(file("${path.module}/k8s/deployment.yml"))
+  manifest = yamldecode(file("${path.module}/k8s/deployment.yaml"))
 }
 
 resource "kubernetes_manifest" "portfolio_nextjs_service" {
-  manifest = yamldecode(file("${path.module}/k8s/service.yml"))
+  manifest = yamldecode(file("${path.module}/k8s/service.yaml"))
 }
