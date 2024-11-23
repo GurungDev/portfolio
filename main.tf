@@ -133,24 +133,51 @@ output "kubeconfig" {
   value = google_container_cluster.primary.endpoint
 }
 
-# resource "kubernetes_namespace" "argocd" {
-#   metadata {
-#     name = "argocd"
-#   }
-# }
+resource "kubernetes_namespace" "argocd" {
+  metadata {
+    name = "argocd"
+  }
+}
 
-# resource "helm_release" "argocd" {
-#   name       = "argocd"
-#   namespace  = kubernetes_namespace.argocd.metadata[0].name
-#   repository = "https://argoproj.github.io/argo-helm"
-#   chart      = "argo-cd"
-#   version    = "5.12.0"  
-# }
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  namespace  = kubernetes_namespace.argocd.metadata[0].name
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  version    = "5.12.0"
+}
 
 
-# output "argocd_server_url" {
-#   value = "https://${helm_release.argocd.name}-server.${kubernetes_namespace.argocd.metadata[0].name}.svc.cluster.local"
-# }
+output "argocd_server_url" {
+  value = "https://${helm_release.argocd.name}-server.${kubernetes_namespace.argocd.metadata[0].name}.svc.cluster.local"
+}
+
+
+resource "kubernetes_manifest" "argocd_portfolio_nextjs_app" {
+  manifest = yamldecode(<<YAML
+        apiVersion: argoproj.io/v1alpha1
+        kind: Application
+        metadata:
+          name: portfolio-nextjs
+          namespace: argocd
+        spec:
+          project: concepts-demo
+          source:
+            repoURL: "https://github.com/GurungDev/portfolio.git"
+            path: "k8s"
+            targetRevision: "main"  # Branch name
+          destination:
+            server: "https://kubernetes.default.svc"
+            namespace: argocd
+          syncPolicy:
+            automated:
+              prune: true   # Automatically delete resources not in Git
+              selfHeal: true # Automatically sync out-of-band changes
+        YAML
+  )
+}
+
+
 
 
 # resource "kubernetes_deployment" "nextjs_deployment" {
@@ -207,10 +234,12 @@ output "kubeconfig" {
 #   }
 # }
 
-resource "kubectl_manifest" "portfolio_nextjs_deployment" {
-  yaml_body = file("${path.module}/k8s/deployment.yaml")
-}
 
-resource "kubectl_manifest" "portfolio_nextjs_service" {
-  yaml_body = file("${path.module}/k8s/service.yaml")
-}
+# data "kubectl_path_documents" "k8" {
+#   pattern = "${path.module}/k8s/*.yml"
+# }
+
+# resource "kubectl_manifest" "portfolio_nextjs" {
+#   for_each  = toset(data.kubectl_path_documents.k8.documents)
+#   yaml_body = each.value
+# }
