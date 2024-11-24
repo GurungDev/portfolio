@@ -1,6 +1,5 @@
-name: Terraform CI/CD
+name: Push Docker Image
 
-## Github Actions
 on:
   push:
     branches:
@@ -15,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -34,46 +32,3 @@ jobs:
           docker build -t portfolio-nextjs:latest .
           docker tag portfolio-nextjs:latest gcr.io/concepts-demo/portfolio-nextjs:latest
           docker push gcr.io/concepts-demo/portfolio-nextjs:latest
-
-      # Setup Terraform CLI
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.9.8
-
-      # Terraform init
-      - name: Initialize Terraform
-        run: terraform init
-
-      # Terraform plan
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
-
-      # Terraform apply (Only on push events to main)
-      - name: Terraform Apply
-        if: github.event_name == 'push'
-        run: terraform apply -auto-approve tfplan
-
-      # Extract Argo CD admin password
-      - name: Get Argo CD Admin Password
-        id: argocd_password
-        run: |
-          export PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode)
-          echo "ARGOCD_PASSWORD=$PASSWORD" >> $GITHUB_ENV
-
-      # Sync Argo CD Application
-      - name: Sync Argo CD Application
-        run: |
-          kubectl port-forward svc/argocd-server -n argocd 8080:443 &
-          sleep 5
-          argocd login localhost:8080 --username admin --password $ARGOCD_PASSWORD --insecure
-          argocd app sync portfolio-nextjs
-
-      # Wait for 1 minute
-      - name: Wait for 20 minute
-        run: sleep 1000
-
-      # Terraform destroy
-      - name: Terraform Destroy
-        if: github.event_name == 'push'
-        run: terraform destroy -auto-approve
