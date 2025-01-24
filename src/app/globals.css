@@ -22,6 +22,8 @@ body {
   scrollbar-width: 0px;
   scrollbar-color: #0b1930 grey;
   color: white;
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23FFF" stroke="%23000" stroke-width="1.75" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z"></path></svg>'),
+    auto;
 }
 
 html {
@@ -30,28 +32,18 @@ html {
 
 .c1 {
   font-family: "Edu AU VIC WA NT Guides", cursive;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
 }
 
 .c2 {
   font-family: "Permanent Marker", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .c3 {
   font-family: "Anton", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .c4 {
   font-family: "Quicksand", serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
 }
 
 h1,
@@ -60,7 +52,7 @@ h3,
 h4,
 h5 {
   font-family: "Quicksand", serif;
-  color: #0b1930;
+  color: #070e1a;
 }
 
 h1 {
@@ -187,3 +179,112 @@ body {
   background: linear-gradient(145deg, #cfcfcf, #f6f6f6);
   box-shadow: 26px 26px 52px #c4c4c4, -26px -26px 52px #ffffff;
 }
+
+/*  Footer CSS */
+.custom-shape-divider-top-1737557381 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1737557381 svg {
+  position: relative;
+  display: block;
+  width: calc(132% + 1.3px);
+  height: 116px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1737557381 .shape-fill {
+  fill: #e8e8e8;
+}
+
+/* Button CSS */
+.button-1 {
+  --color: #e8e8e8;
+  background-color: transparent;
+  border-radius: 0.3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+  border: 1px solid;
+  text-transform: uppercase;
+  color: var(--color);
+  z-index: 1;
+}
+
+.button-1::before,
+.button-1::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.button-1::before {
+  top: -1em;
+  left: -1em;
+}
+
+.button-1::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.button-1:hover::before,
+.button-1:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.button-1:hover {
+  color: rgb(10, 25, 30);
+}
+
+.button-1:active {
+  filter: brightness(0.8);
+}
+
+/* Parallax text animation */
+.parallax {
+  overflow: hidden;
+  letter-spacing: -2px;
+  line-height: 0.8;
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.parallax .scroller {
+  text-transform: uppercase;
+
+  display: flex;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.parallax span {
+  display: block;
+}
+
+/* Projects section CSS */
+
+.boxes {
+  box-shadow: 3px -2px 29px -10px rgba(68,43,43,0.51);
+  -webkit-box-shadow: 3px -2px 29px -10px rgba(68,43,43,0.51);
+  -moz-box-shadow: 3px -2px 29px -10px rgba(68,43,43,0.51);
+}
+
+

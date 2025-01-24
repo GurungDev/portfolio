@@ -33,7 +33,8 @@ export const Background = () => {
           value: "#00DBDE",
         },
 
-        image: "url('https://images.pexels.com/photos/1704119/pexels-photo-1704119.jpeg?auto=compress&cs=tinysrgb&w=1860&h=850&dpr=1')",
+        image:
+          "url('https://images.pexels.com/photos/1704119/pexels-photo-1704119.jpeg?auto=compress&cs=tinysrgb&w=1860&h=850&dpr=1')",
         position: "50% 50%",
         repeat: "no-repeat",
         size: "fit",
@@ -43,11 +44,7 @@ export const Background = () => {
         composite: "destination-out",
         cover: {
           color: {
-            value: {
-              r: 255,
-              g: 255,
-              b: 255,
-            },
+            value: "#e8e8e8",
           },
           opacity: 1,
         },
@@ -172,7 +169,7 @@ export const Background = () => {
             area: {
               gradient: {
                 start: {
-                  value: "#ffffff",
+                  value: "#e8e8e8",
                 },
                 stop: {
                   value: "#000000",
