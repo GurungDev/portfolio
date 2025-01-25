@@ -3,6 +3,7 @@ import "./globals.css";
 import MouseCursor from "@/components/mouseCursoe";
 import Navbar from "@/components/navbar";
 import FooterComp from "@/components/footer";
+import 'lenis/dist/lenis.css'
 
 export const metadata: Metadata = {
   title: "NGR",
@@ -15,7 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" >
+     
+
       <body className={``}>
         <Navbar/>
         {children}

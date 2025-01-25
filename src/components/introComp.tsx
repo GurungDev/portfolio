@@ -6,9 +6,10 @@ import ParallaxText from "./scrollTextAnimation";
 const IntroComp = () => {
   return (
     <div
-      className="relative h-[100dvh] bg-highlight border-b-[20px] border-primary w-full m-auto overflow-hidden"
-      // style={{"backgroundImage" : `url('bg.png'); background-repeat: no-repeat; background-size: cover`}}
+      className="relative h-[100dvh] bg-secondary border-y-[10px]  border-primary  w-full m-auto overflow-hidden"
+      style={{"backgroundImage" : `url('bg1.svg'); background-repeat: no-repeat; background-size: cover`}}
     >
+      
       {/* Background Image */}
       <Image
         src="/bio/p2.png"
@@ -34,7 +35,7 @@ const IntroComp = () => {
           <GoArrowDownRight size={40} className="mb-8" />
 
           <p className="text-light c4 text-4xl font-[200] ">
-            Hello, I'm Freelance
+            Hello, I&apos;m Freelance
           </p>
 
           <p className="text-light c4 text-4xl font-[200] ">
@@ -43,7 +44,6 @@ const IntroComp = () => {
           <button className="button-1 px-4 py-2 my-6">Download Resume</button>
         </div>
       </motion.div>
-
       <div className="absolute top-20 right-0">
         <motion.div
           initial={{ opacity: 0, width: 0 }}
