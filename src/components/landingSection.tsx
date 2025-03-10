@@ -9,10 +9,15 @@ const LandingSection = () => {
     <div className="relative">
       {" "}
       <div className="  flex items-center justify-center min-[1100px]:justify-around flex-col bg-neutral-100 bg-opacity-100 custom-border md:flex-row h-[100vh] ">
-        <Lottie animationData={title} className="w-[80%]  min-[1100px]:w-[50%] " />
-        <Lottie animationData={animation} className="w-[50%] min-[1100px]:w-[20%] custom-border " />
+        <Lottie
+          animationData={title}
+          className="w-[80%]  min-[1100px]:w-[50%] "
+        />
+        <Lottie
+          animationData={animation}
+          className="w-[50%] min-[1100px]:w-[20%] custom-border "
+        />
       </div>
-
     </div>
   );
 };

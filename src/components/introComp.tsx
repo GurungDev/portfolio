@@ -6,7 +6,7 @@ import ParallaxText from "./scrollTextAnimation";
 const IntroComp = () => {
   return (
     <div
-      className="relative h-[100dvh] bg-secondary border-y-[10px]  border-primary  w-full m-auto overflow-hidden"
+      className="relative h-[100dvh] bg-dark border-y-[10px]  border-primary  w-full m-auto overflow-hidden"
       style={{"backgroundImage" : `url('bg1.svg'); background-repeat: no-repeat; background-size: cover`}}
     >
       

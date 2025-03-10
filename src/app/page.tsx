@@ -1,4 +1,5 @@
 import { Background } from "@/components/background";
+import CompanyLogos from "@/components/companylogo";
 import IntroComp from "@/components/introComp";
 import KnowledgeComp from "@/components/knowledgeComp";
 import LandingSection from "@/components/landingSection";
@@ -13,9 +14,13 @@ export default function Home() {
         
         <LandingSection />
         <IntroComp />
-        <KnowledgeComp />
         <MarqueeComponent baseVelocity={-1} />
+
+        <KnowledgeComp />
         <ProjectComp />
+        <CompanyLogos baseVelocity={1} />
+
+        
         <Background />
       </SmoothScrollWrapper>
     </div>

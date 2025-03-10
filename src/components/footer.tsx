@@ -3,8 +3,8 @@ import React from "react";
 
 const FooterComp = () => {
   return (
-    <div className=" relative">
-      <div className="custom-shape-divider-top-1737557381">
+    <div className=" relative   ">
+      <div className="custom-shape-divider-top-1737557381 ">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ const FooterComp = () => {
           ></path>
         </svg>
       </div>
-      <div className="bg-primary pt-60 pb-24">
+      <div className="bg-highlight pt-60 pb-24">
         <div className="app-layout flex flex-col min-[1100px]:flex-row  items-start justify-between">
           <div>
             <h1 className="text-light mb-10">NGR</h1>
@@ -115,7 +115,7 @@ const FooterComp = () => {
           </div>
         </div>
       </div>
-      <div className="text-center bg-highlight py-5 text-sm text-neutral-200">
+      <div className="text-center bg-highlight border-t-[1px] border-zinc-300 py-5 text-sm text-neutral-200">
         © 2025 gurungngr. ALL RIGHT RESERVED
       </div>
     </div>
