@@ -6,6 +6,7 @@ import LandingSection from "@/components/landingSection";
 import MarqueeComponent from "@/components/marque";
 import ProjectComp from "@/components/projectsComp";
 import SmoothScrollWrapper from "@/components/smoothScroll";
+import TechnologyUsesComponent from "@/components/technology";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <MarqueeComponent baseVelocity={-1} />
 
         <KnowledgeComp />
+        <TechnologyUsesComponent/>
         <ProjectComp />
         <CompanyLogos baseVelocity={1} />
 

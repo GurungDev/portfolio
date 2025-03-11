@@ -26,12 +26,12 @@ export function ServiceCard({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
       whileHover={{ y: -5 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
+      className="m-5 w-full"
     >
-      <div className="h-full overflow-hidden rounded-xl bg-dark border-2 transition-all duration-300 hover:shadow-lg">
+      <div className="h-full overflow-hidden backdrop-blur-xl rounded-xl w-full border-2 transition-all duration-300 hover:shadow-lg">
         <div className={cn("h-2 w-full", color)} />
         <div className="p-6 ">
           <div className="flex items-center justify-between">
@@ -53,3 +53,4 @@ export function ServiceCard({
     </motion.div>
   );
 }
+

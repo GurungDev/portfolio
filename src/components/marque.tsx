@@ -70,9 +70,16 @@ export default function MarqueeComponent({
    * dynamically generated number of children.
    */
   return (
-    <div className="parallax ">
+    <div
+      className="parallax bg-dark relative"
+      style={{
+        backgroundImage: `url('bg2.svg'); background-repeat: no-repeat; background-size: cover`,
+      }}
+    >
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-[10%] z-[1]"></div>
+
       <motion.div className="scroller" style={{ x }}>
-        <div className=" bg-highlight">
+        <div className=" ">
           <div className="flex  items-center justify-around py-20 w-[320vw] min-[1100px]:w-[200vw] lg:w-[120vw]">
             <div className="grid group items-center justify-center custom-border2 shadow-xl bg-neutral-500">
               <Lottie

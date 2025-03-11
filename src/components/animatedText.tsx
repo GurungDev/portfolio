@@ -1,39 +1,23 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 interface AnimatedTextProps {
-  text: string
+  text: string;
 }
 
 export function AnimatedText({ text }: AnimatedTextProps) {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
-  const words = text.split(" ")
+  const words = text.split(" ");
 
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i },
-    }),
-  }
-
-  const child = {
     visible: {
       opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
+      transition: { staggerChildren: 0.12, delayChildren: 0.04 },
     },
+  };
+
+  const child = {
     hidden: {
       opacity: 0,
       y: 20,
@@ -43,26 +27,35 @@ export function AnimatedText({ text }: AnimatedTextProps) {
         stiffness: 100,
       },
     },
-  }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
     <motion.div
       style={{ overflow: "hidden", display: "flex", flexWrap: "wrap" }}
       variants={container}
       initial="hidden"
-      animate={isVisible ? "visible" : "hidden"}
+      whileInView="visible"
+      className="h-[200px] flex items-center justify-center"
     >
       {words.map((word, index) => (
         <motion.span
           key={index}
           variants={child}
           style={{ marginRight: "0.25em", display: "inline-block" }}
-          className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+          className="text-white text-[7rem]"
         >
           {word}
         </motion.span>
       ))}
     </motion.div>
-  )
+  );
 }
-

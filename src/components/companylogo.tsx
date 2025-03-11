@@ -96,7 +96,7 @@ export default function CompanyLogos({ baseVelocity = 100 }: ParallaxProps) {
    * dynamically generated number of children.
    */
   return (
-    <div className="bg-dark relative pb-20">
+    <div className="bg-highlight relative pb-20">
       <div className="overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: 100 }}
@@ -120,7 +120,7 @@ export default function CompanyLogos({ baseVelocity = 100 }: ParallaxProps) {
 
       <div className="parallax ">
         <motion.div className="scroller" style={{ x }}>
-          <div className=" bg-dark">
+          <div className=" ">
             <div className="flex  items-center justify-around py-20 w-[300vw] min-[1100px]:w-[200vw] lg:w-[110pw]">
               {Logos.map((logo, index) => (
                 <a
