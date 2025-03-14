@@ -84,7 +84,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl bg-neutral-500">
               <Lottie
                 animationData={plan}
-                className="w-[200px] group-hover:scale-[1.4] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.4] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Plan</h1>
@@ -94,7 +94,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl  bg-neutral-700">
               <Lottie
                 animationData={design}
-                className="w-[200px] group-hover:scale-[1.4] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.4] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Design</h1>
@@ -104,7 +104,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl  bg-neutral-500">
               <Lottie
                 animationData={build}
-                className="w-[200px] group-hover:scale-[1.1] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.1] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Build</h1>
@@ -114,7 +114,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl  bg-neutral-700">
               <Lottie
                 animationData={host}
-                className="w-[200px] group-hover:scale-[1.2] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.2] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Host</h1>
@@ -124,7 +124,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl bg-neutral-500">
               <Lottie
                 animationData={plan}
-                className="w-[200px] group-hover:scale-[1.4] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.4] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Plan</h1>
@@ -134,7 +134,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl  bg-neutral-700">
               <Lottie
                 animationData={design}
-                className="w-[200px] group-hover:scale-[1.4] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.4] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Design</h1>
@@ -144,7 +144,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl  bg-neutral-500">
               <Lottie
                 animationData={build}
-                className="w-[200px] group-hover:scale-[1.1] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.1] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Build</h1>
@@ -154,7 +154,7 @@ export default function MarqueeComponent({
             <div className="grid group items-center justify-center custom-border2 shadow-xl  bg-neutral-700">
               <Lottie
                 animationData={host}
-                className="w-[200px] group-hover:scale-[1.2] duration-500"
+                className="w-[100px]  min-[1100px]:w-[200px] group-hover:scale-[1.2] duration-500"
               />
 
               <h1 className=" c2 text-light w-full ">Host</h1>

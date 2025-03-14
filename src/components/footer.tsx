@@ -32,7 +32,7 @@ const FooterComp = () => {
           <div>
             <h1 className="text-light mb-10">NGR</h1>
 
-            <ul className="flex  gap-5 justify-between items-center">
+            <ul className="flex  gap-x-5 justify-between flex-wrap my-8 items-center">
               <li>
                 <Link
                   href="#home"

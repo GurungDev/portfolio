@@ -44,17 +44,19 @@ export function AnimatedText({ text }: AnimatedTextProps) {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="h-[200px] flex items-center justify-center"
+      className="h-[300px] flex items-center justify-center"
     >
       {words.map((word, index) => (
-        <motion.span
-          key={index}
-          variants={child}
-          style={{ marginRight: "0.25em", display: "inline-block" }}
-          className="text-white text-[7rem]"
-        >
-          {word}
-        </motion.span>
+        <p key={index} className="tagline  ">
+          {" "}
+          <motion.span
+            variants={child}
+            style={{ marginRight: "0.25em" }}
+            className="text-dark font-bold   "
+          >
+            {word}
+          </motion.span>
+        </p>
       ))}
     </motion.div>
   );

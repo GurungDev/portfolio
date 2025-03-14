@@ -1,23 +1,16 @@
 "use client";
-import React from "react";
-import Lottie from "lottie-react";
-import plan from "../animations/plan.json";
-import design from "../animations/design.json";
-import { useRef } from "react";
 import {
   motion,
+  useAnimationFrame,
+  useMotionValue,
   useScroll,
   useSpring,
   useTransform,
-  useMotionValue,
   useVelocity,
-  useAnimationFrame,
+  wrap,
 } from "framer-motion";
-import { wrap } from "framer-motion";
-import build from "../animations/build.json";
-import host from "../animations/host.json";
-import { GoArrowRight } from "react-icons/go";
 import Image from "next/image";
+import { useRef } from "react";
 
 interface ParallaxProps {
   baseVelocity: number;
@@ -95,8 +88,27 @@ export default function CompanyLogos({ baseVelocity = 100 }: ParallaxProps) {
    * we have four children (100% / 4). This would also want deriving from the
    * dynamically generated number of children.
    */
+
+  const { scrollYProgress } = useScroll(); // Get the scroll progress (0 to 1)
+
+  // Map scroll progress to opacity and scale values
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const scale = useTransform(scrollYProgress, [0.7, 1], [1.4, 0.8]);
   return (
-    <div className="bg-highlight relative pb-20">
+    <div className="bg-highlight relative pb-20 overflow-hidden">
+      <motion.div
+        style={{ opacity, scale }} // Apply dynamic values
+        className="absolute top-[20%] left-[10%] w-full h-full "
+      >
+        <Image
+          src="/companylogobg.png"
+          alt="background objects"
+          width={700}
+          height={700}
+          className="  w-[90%]  "
+        />
+      </motion.div>
+
       <div className="overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: 100 }}
@@ -135,24 +147,25 @@ export default function CompanyLogos({ baseVelocity = 100 }: ParallaxProps) {
                     alt="plan"
                     width={200}
                     height={200}
-                    className="w-[150px] h-[150px] duration-500"
+                    className=" w-[60px] h-[60px] md:w-[100px] md:h-[100px] min-[1100px]:w-[150px] min-[1100px]:h-[150px] duration-500"
                   />
                 </a>
               ))}
-                {Logos.map((logo, index) => (
+
+              {Logos.map((logo, index) => (
                 <a
                   key={index}
                   href={logo.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="grid group hover:scale-125 duration-500 items-center justify-center p-5 rounded-full shadow-xl bg-light"
+                  className="grid group hover:scale-125 overflow-hidden duration-500 items-center justify-center p-5 rounded-full shadow-xl bg-light"
                 >
                   <Image
                     src={logo.logo}
                     alt="plan"
                     width={200}
                     height={200}
-                    className="w-[150px] h-[150px] duration-500"
+                    className=" w-[60px] h-[60px] md:w-[100px] md:h-[100px] min-[1100px]:w-[150px] min-[1100px]:h-[150px] duration-500"
                   />
                 </a>
               ))}
@@ -172,4 +185,3 @@ export default function CompanyLogos({ baseVelocity = 100 }: ParallaxProps) {
     </div>
   );
 }
-

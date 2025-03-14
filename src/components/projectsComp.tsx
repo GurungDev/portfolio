@@ -30,7 +30,9 @@ const ProjectComp = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-right "
         >
-          <h3 className="app-layout text-[8rem]  font-[600] my-20">PROJECTS</h3>
+          <h3 className="app-layout lg:text-[8rem]  font-[600] my-20">
+            PROJECTS
+          </h3>
         </motion.div>
       </div>
       <div className="absolute top-20 ">
@@ -42,7 +44,7 @@ const ProjectComp = () => {
         ></motion.div>
       </div>
 
-      <div className=" grid justify-stretch overflow-hidden pl-20 grid-rows-4 gap-7 grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-4 ">
+      <div className=" hidden  min-[1100px]:grid justify-stretch overflow-hidden pl-20 min-[1100px]:grid-rows-4 gap-7 grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-4 ">
         {/* First Box */}
         <motion.div
           className="relative overflow-hidden  bg-red-200 row-span-2 h-[80vh] rounded-xl boxes"
@@ -175,7 +177,6 @@ const ProjectComp = () => {
           </div>
         </motion.div>
 
-       
         {/* Seventh Box */}
         <motion.div
           className="relative overflow-hidden bg-red-300 col-span-4 rounded-l-xl boxes"
@@ -195,6 +196,24 @@ const ProjectComp = () => {
             Box 7
           </div>
         </motion.div>
+      </div>
+
+      <div className="grid min-[1100px]:hidden app-layout">
+        <div
+          className="relative overflow-hidden  bg-red-200 row-span-2 h-[80vh] rounded-xl boxes"
+          style={{
+            backgroundImage: 'url("/bg.png")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+          {/* Text */}
+          <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">
+            Box 1
+          </div>
+        </div>
       </div>
     </div>
   );

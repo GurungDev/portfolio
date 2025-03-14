@@ -1,115 +1,65 @@
+"use client";
 import React from "react";
 import { AnimatedText } from "./animatedText";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const TechnologyUsesComponent = () => {
+  const { scrollYProgress } = useScroll(); // Get the scroll progress (0 to 1)
+
+  // Map scroll progress to opacity and scale values
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.5, 0.2]);
+  const logoScale = useTransform(scrollYProgress, [0, 1], [1.8, 0.5]);
+
+  const mobileScale = useTransform(scrollYProgress, [0.5, 1], [1.2, .8]);
+
   return (
-    <div className="bg-highlight">
-      <AnimatedText text="Technology Uses" />
+    <div className="overflow-hidden">
+      <div className="hidden min-[1100px]:block bg-highlight relative border-y-[10px] border-t-light  border-b-primary py-20 overflow-hidden h-[120dvh]">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]">
+          <AnimatedText text="TECHNOLOGY THAT I USE" />
+        </div>
 
-      <div>
-        <svg
-          width="1000"
-          height="1000"
-          viewBox="0 0 1000 1000"
-          xmlns="http://www.w3.org/2000/svg"
+        <motion.div
+          style={{ scale: logoScale }} // Apply dynamic values
+          className="absolute  w-full h-full opacity-100"
         >
-          <circle
-            cx="500"
-            cy="500"
-            r="50"
-            stroke="black"
-            stroke-width="2"
-            fill="none"
+          {" "}
+          <Image
+            src="/icons.png"
+            width={1000}
+            height={1000}
+            className="m-auto w-[60%]"
+            alt="Picture of the author"
           />
-          <circle
-            cx="500"
-            cy="500"
-            r="150"
-            stroke="black"
-            stroke-width="2"
-            fill="none"
+        </motion.div>
+        <motion.div
+          style={{ opacity, scale }} // Apply dynamic values
+          className="absolute  w-full h-full "
+        >
+          <Image
+            src="/iconsbg.png"
+            alt="background objects"
+            width={700}
+            height={700}
+            className=" w-[60%] m-auto  "
           />
-          <circle
-            cx="500"
-            cy="500"
-            r="250"
-            stroke="black"
-            stroke-width="2"
-            fill="none"
+        </motion.div>
+      </div>
+      <div className="bg-highlight  relative min-[1100px]:hidden">
+        <motion.div
+          style={{ scale: mobileScale }}
+          className="w-[100%] h-[100dvh] "
+        >
+          <Image
+            src="/m.svg"
+            alt="background objects"
+            fill
+            quality={100}
+            className="object-contain "
           />
-          <circle
-            cx="500"
-            cy="500"
-            r="350"
-            stroke="black"
-            stroke-width="2"
-            fill="none"
-          />
-          <circle
-            cx="500"
-            cy="500"
-            r="450"
-            stroke="black"
-            stroke-width="2"
-            fill="none"
-          />
-
-          <text x="500" y="500" className="logo" fill="black">
-            Tech Stack
-          </text>
-
-          <text x="500" y="420" className="logo" fill="#0000FF">
-            Next.js
-          </text>
-          <text x="580" y="460" className="logo" fill="#FF5733">
-            Vite
-          </text>
-          <text x="620" y="540" className="logo" fill="#61DAFB">
-            React.js
-          </text>
-          <text x="580" y="620" className="logo" fill="#8CC84B">
-            Node.js
-          </text>
-          <text x="500" y="660" className="logo" fill="#092E20">
-            Django REST
-          </text>
-          <text x="420" y="620" className="logo" fill="#4285F4">
-            GCP
-          </text>
-          <text x="380" y="540" className="logo" fill="#623CE4">
-            Terraform
-          </text>
-          <text x="420" y="460" className="logo" fill="#24292E">
-            GitHub Actions
-          </text>
-          <text x="340" y="500" className="logo" fill="#F34F29">
-            Git
-          </text>
-          <text x="620" y="500" className="logo" fill="#181717">
-            GitHub
-          </text>
-          <text x="700" y="580" className="logo" fill="#000000">
-            Express.js
-          </text>
-          <text x="660" y="680" className="logo" fill="#E0234E">
-            Nest.js
-          </text>
-          <text x="500" y="780" className="logo" fill="#47A248">
-            MongoDB
-          </text>
-          <text x="340" y="680" className="logo" fill="#4479A1">
-            SQL
-          </text>
-          <text x="300" y="580" className="logo" fill="#00758F">
-            MySQL
-          </text>
-          <text x="280" y="460" className="logo" fill="#336791">
-            PostgreSQL
-          </text>
-          <text x="300" y="340" className="logo" fill="#2496ED">
-            Docker
-          </text>
-        </svg>
+        </motion.div>
       </div>
     </div>
   );
