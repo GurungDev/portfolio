@@ -6,14 +6,14 @@ import FooterComp from "@/components/footer";
 import "lenis/dist/lenis.css";
 
 export const metadata: Metadata = {
-  title: "NGR - Portfolio Website for Web Development and DevOps Services",
+  title: "NGR",
   description:
     "Nishan Gurung provides web development and DevOps services. Check out my portfolio and get in touch with me for any project inquiries.",
   keywords: ["web development", "devops", "portfolio", "Nishan Gurung"],
   authors: [{ name: "Nishan Gurung", url: "https://www.nishangurung.com.np" }],
   creator: "Nishan Gurung",
   openGraph: {
-    title: "NGR - Portfolio Website for Web Development and DevOps Services",
+    title: "NGR",
     description:
       "Nishan Gurung provides web development and DevOps services. Check out my portfolio and get in touch with me for any project inquiries.",
     url: "https://www.nishangurung.com.np",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: "NGR - Portfolio Website for Web Development and DevOps Services",
+    title: "NGR",
     description:
       "Nishan Gurung provides web development and DevOps services. Check out my portfolio and get in touch with me for any project inquiries.",
     card: "summary_large_image",
