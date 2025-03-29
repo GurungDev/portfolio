@@ -45,10 +45,10 @@ const ProjectComp = () => {
         ></motion.div>
       </div>
 
-      <div className=" hidden  min-[1100px]:grid justify-stretch overflow-hidden pl-20 min-[1100px]:grid-rows-4 gap-7 grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-4 ">
+      <div className=" hidden  min-[1100px]:grid justify-stretch overflow-hidden pl-20 py-20 min-[1100px]:grid-rows-4 gap-7 grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-4 ">
         {/* First Box */}
         <motion.div
-          className="relative group bg-red-200 row-span-2 h-[80vh] rounded-xl boxes"
+          className="relative group row-span-2 h-[80vh] rounded-xl boxes"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -60,38 +60,48 @@ const ProjectComp = () => {
             backgroundPosition: "center",
           }}
         >
-           <div>
+          <div>
             <Image
-              src="/lzm.png"
-              width={500}
-              height={500}
-              alt="Picture of the author"
-              className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
+              src="/plm.png"
+              width={600 }
+              height={600}
+              alt="Perfect Legion mockup"
+              className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] inset-0  z-[1] rounded-xl"
             />
           </div>
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
-          <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-            <h3 className="text-light font-bold ">Lazy Fish Restaurant</h3>
+          <div className="absolute  z-[2] group  duration-300 group-hover:top-[60%] transition-all group-hover:z-[3]  top-[50%]  left-[10%]">
+            <h3 className="text-light font-bold ">Perfect Legion LDA </h3>
+            <p className=" ">A single page portfolio website for recruitment company.</p>
           </div>
         </motion.div>
 
         {/* Second Box */}
         <motion.div
-          className="relative overflow-hidden bg-red-300 col-span-2 rounded-xl boxes"
+          className="relative   group col-span-2 rounded-xl boxes"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           custom="top"
-          variants={variants}
           style={{
             backgroundImage: 'url("/bg.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
+          variants={variants}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-          <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">
-            Box 2
+          <div>
+            <Image
+              src="/ackresponsep.png"
+              width={500}
+              height={500}
+              alt="ackresponse website photo"
+              className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
+            />
+          </div>
+          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+          <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <h3 className="text-light font-bold ">ACKRESPONSE</h3>
           </div>
         </motion.div>
 
@@ -212,13 +222,12 @@ const ProjectComp = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
           <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
             <h3 className="text-light font-bold ">Lazy Fish Restaurant</h3>
-          
           </div>
         </motion.div>
 
         {/* Seventh Box */}
         <motion.div
-          className="relative overflow-hidden bg-red-300 col-span-4 rounded-l-xl boxes"
+          className="relative group  bg-red-300 col-span-4  rounded-l-xl boxes"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -230,30 +239,23 @@ const ProjectComp = () => {
             backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-          <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">
-            Box 7
+          <div>
+            <Image
+              src="/gymseekp.png"
+              width={500}
+              height={500}
+              alt="Picture of the author"
+              className="absolute group-hover:scale-[110%] group-hover:z-[2] duration-300 inset-0  left-[20%] z-[1] rounded-xl"
+            />
+          </div>
+          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+          <div className="absolute  z-[2]  duration-300 group-hover:left-[70%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <h3 className="text-light font-bold ">Gym Seek</h3>
           </div>
         </motion.div>
       </div>
 
-      <div className="grid min-[1100px]:hidden app-layout">
-        <div
-          className="relative overflow-hidden  bg-red-200 row-span-2 h-[80vh] rounded-xl boxes"
-          style={{
-            backgroundImage: 'url("/bg.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
-          {/* Text */}
-          <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">
-            Box 1
-          </div>
-        </div>
-      </div>
+      <div className="grid min-[1100px]:hidden app-layout"></div>
     </div>
   );
 };
