@@ -148,7 +148,7 @@ const ProjectComp = () => {
           >
             <div>
               <Image
-                src="/ackresponsep.png"
+                src="/ackresponseP.png"
                 width={500}
                 height={500}
                 alt="ackresponse website photo"
