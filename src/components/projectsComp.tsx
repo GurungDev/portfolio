@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -21,6 +20,50 @@ const ProjectComp = () => {
       },
     },
   };
+  const projects = [
+    {
+      title: "Perfect Legion LDA",
+      image: "/plm.png",
+      description: "A single page portfolio website for a recruitment company.",
+      link: "https://www.perfectlegionlda.pt",
+    },
+    {
+      title: "ACKRESPONSE",
+      image: "/ackresponsep.png",
+      description: "",
+      link: "https://www.ackresponse.com",
+    },
+    {
+      title: "Lazy Fish Restaurant",
+      image: "/lzm.png",
+      description: "",
+      link: "https://lazyfish.vercel.app",
+    },
+    {
+      title: "Ava & Fre",
+      image: "/rm.png",
+      description: "",
+      link: "https://recruitment-company.vercel.app/",
+    },
+    {
+      title: "Gym Seek",
+      image: "/gymseekp.png",
+      description: "",
+      link: "https://gymseek.vercel.app/",
+    },
+    {
+      title: "Enirman",
+      image: "/enirman.png",
+      description: "",
+      link: "https://www.enirmanhomes.com/",
+    },
+    {
+      title: "WaaTech",
+      image: "/waatech.png",
+      description: "",
+      link: "https://www.waatech.com",
+    },
+  ];
 
   return (
     <div className="py-20 bg-light relative">
@@ -60,20 +103,28 @@ const ProjectComp = () => {
             backgroundPosition: "center",
           }}
         >
-          <div>
-            <Image
-              src="/plm.png"
-              width={600 }
-              height={600}
-              alt="Perfect Legion mockup"
-              className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] inset-0  z-[1] rounded-xl"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
-          <div className="absolute  z-[2] group  duration-300 group-hover:top-[60%] transition-all group-hover:z-[3]  top-[50%]  left-[10%]">
-            <h3 className="text-light font-bold ">Perfect Legion LDA </h3>
-            <p className=" ">A single page portfolio website for recruitment company.</p>
-          </div>
+          <a
+            href="https://www.perfectlegionlda.pt"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <Image
+                src="/plm.png"
+                width={600}
+                height={600}
+                alt="Perfect Legion mockup"
+                className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] inset-0  z-[1] rounded-xl"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+            <div className="absolute  z-[2] group  duration-300 group-hover:top-[60%] transition-all group-hover:z-[3]  top-[50%]  left-[10%]">
+              <h3 className="text-light font-bold ">Perfect Legion LDA </h3>
+              <p className=" ">
+                A single page portfolio website for recruitment company.
+              </p>
+            </div>
+          </a>
         </motion.div>
 
         {/* Second Box */}
@@ -90,19 +141,25 @@ const ProjectComp = () => {
           }}
           variants={variants}
         >
-          <div>
-            <Image
-              src="/ackresponsep.png"
-              width={500}
-              height={500}
-              alt="ackresponse website photo"
-              className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
-          <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-            <h3 className="text-light font-bold ">ACKRESPONSE</h3>
-          </div>
+          <a
+            href="https://www.ackresponse.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <Image
+                src="/ackresponsep.png"
+                width={500}
+                height={500}
+                alt="ackresponse website photo"
+                className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+            <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+              <h3 className="text-light font-bold ">ACKRESPONSE</h3>
+            </div>
+          </a>
         </motion.div>
 
         {/* Third Box */}
@@ -136,33 +193,21 @@ const ProjectComp = () => {
         </div>
 
         {/* Fourth Box */}
-        <motion.div
-          className="relative  group bg-black rounded-xl boxes"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom="bottom"
-          variants={variants}
-          style={{
-            backgroundImage: 'url("/bg.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
+        <div className=" flex ">
           <div>
+            <p className="text-center text-black">
+              Developed and deployed full-stack web applications.
+            </p>
+
             <Image
-              src="/lzm.png"
+              src="/myself.png"
               width={500}
               height={500}
               alt="Picture of the author"
-              className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
+              className=" w-[50%] m-auto"
             />
           </div>
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
-          <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-            <h3 className="text-light font-bold ">Lazy Fish Restaurant</h3>
-          </div>
-        </motion.div>
+        </div>
 
         {/* Fifth Box */}
         <motion.div
@@ -178,22 +223,27 @@ const ProjectComp = () => {
             backgroundPosition: "center",
           }}
         >
-          <div>
-            <Image
-              src="/lzm.png"
-              width={800}
-              height={800}
-              alt="Picture of the author"
-              className="absolute group-hover:scale-[110%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
-          <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-            <h3 className="text-light font-bold ">Lazy Fish Restaurant</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            </p>
-          </div>
+          {" "}
+          <a
+            href="https://lazyfish.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <Image
+                src="/lzm.png"
+                width={800}
+                height={800}
+                alt="Picture of the author"
+                className="absolute group-hover:scale-[110%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+            <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+              <h3 className="text-light font-bold ">Lazy Fish Restaurant</h3>
+              <p></p>
+            </div>
+          </a>
         </motion.div>
 
         {/* Sixth Box */}
@@ -210,19 +260,26 @@ const ProjectComp = () => {
             backgroundPosition: "center",
           }}
         >
-          <div>
-            <Image
-              src="/lzm.png"
-              width={600}
-              height={600}
-              alt="Picture of the author"
-              className="absolute group-hover:scale-[110%] group-hover:z-[2] duration-300 inset-0 top-[-20%]  z-[1] rounded-xl"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
-          <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-            <h3 className="text-light font-bold ">Lazy Fish Restaurant</h3>
-          </div>
+          {" "}
+          <a
+            href="  https://recruitment-company.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <Image
+                src="/rm.png"
+                width={500}
+                height={500}
+                alt="Picture of the author"
+                className="absolute group-hover:scale-[110%] group-hover:z-[2] duration-300 inset-0 top-[20%]  z-[1] rounded-xl"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+            <div className="absolute  z-[2]  duration-300 group-hover:left-[70%] transition-all group-hover:z-[3]  top-[50%] left-[50%] ">
+              <h3 className="text-light font-bold ">Ava & Fre </h3>
+            </div>
+          </a>
         </motion.div>
 
         {/* Seventh Box */}
@@ -239,23 +296,409 @@ const ProjectComp = () => {
             backgroundPosition: "center",
           }}
         >
+          <a
+            href="https://gymseek.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <Image
+                src="/gymseekp.png"
+                width={500}
+                height={500}
+                alt="Picture of the author"
+                className="absolute group-hover:scale-[110%] group-hover:z-[2] duration-300 inset-0  left-[20%] z-[1] rounded-xl"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+            <div className="absolute  z-[2]  duration-300 group-hover:left-[70%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+              <h3 className="text-light font-bold ">Gym Seek</h3>
+            </div>
+          </a>
+        </motion.div>
+
+        <div className=" row-span-2  flex items-center justify-center    col-span-2 ">
           <div>
+            <p className="text-center text-black">
+              I worked on several projects for sartup companies.
+            </p>
+
             <Image
-              src="/gymseekp.png"
+              src="/mewaving.png"
               width={500}
               height={500}
               alt="Picture of the author"
-              className="absolute group-hover:scale-[110%] group-hover:z-[2] duration-300 inset-0  left-[20%] z-[1] rounded-xl"
+              className=" w-[60%] m-auto"
             />
           </div>
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
-          <div className="absolute  z-[2]  duration-300 group-hover:left-[70%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-            <h3 className="text-light font-bold ">Gym Seek</h3>
+        </div>
+
+        <div className="relative grid  gap-5  col-span-2 h-[80vh] rounded-xl ">
+          <motion.div
+            className="relative   group   rounded-xl boxes"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom="top"
+            style={{
+              backgroundImage: 'url("/bg.png")',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            variants={variants}
+          >
+            <a
+              href="https://enirmanhomes.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div>
+                <Image
+                  src="/enirman.png"
+                  width={500}
+                  height={500}
+                  alt="ackresponse website photo"
+                  className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
+                />
+              </div>
+              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+              <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                <h3 className="text-light font-bold ">Enirman</h3>
+              </div>
+            </a>
+          </motion.div>
+          <motion.div
+            className="relative  group bg-black rounded-xl boxes"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom="bottom"
+            variants={variants}
+            style={{
+              backgroundImage: 'url("/bg.png")',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <a
+              href="https://waatech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div>
+                <Image
+                  src="/waatech.png"
+                  width={500}
+                  height={500}
+                  alt="Picture of the author"
+                  className="absolute group-hover:scale-[150%] group-hover:z-[2] duration-300 inset-0  z-[1] rounded-xl"
+                />
+              </div>
+              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl z-[1]"></div>
+              <div className="absolute  z-[2]  duration-300 group-hover:top-[80%] transition-all group-hover:z-[3]  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                <h3 className="text-light font-bold ">WaaTech</h3>
+              </div>
+            </a>
+          </motion.div>
+        </div>
+
+        <div className=" row-span-2  flex items-center justify-center    col-span-2 ">
+          <div>
+            <p className="text-center    text-dark">
+              I have multiple personal projects.
+            </p>
+
+            <Image
+              src="/thumbsup.png"
+              width={500}
+              height={500}
+              alt="Picture of the author"
+              className=" w-[80%] m-auto"
+            />
           </div>
-        </motion.div>
+        </div>
+
+        <div className="relative grid  gap-5  col-span-2    rounded-xl ">
+          <div>
+            <div className="grid gap-2   text-black p-5">
+              <h4 className="font-bold">
+                Pokhara Rentals - SAAS Rental System
+              </h4>
+              <p className="">
+                It is a SAAS rental system where local stores can create their
+                account and list their products and users can rent the products.
+              </p>
+              <div className="flex gap-5">
+                <a
+                  href="https://github.com/GurungDev/pokharaRental-api-v2"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Backend Link
+                </a>
+
+                <a
+                  href="https://github.com/GurungDev/pokharaRentalStorePanel.git"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Store Panel
+                </a>
+
+                <a
+                  href="https://github.com/GurungDev/pokharaRentalCustomerPanel.git"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Customer Panel
+                </a>
+
+                <a
+                  href="https://github.com/GurungDev/pokharaRentalAdminPanel.git"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Admin Panel
+                </a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="grid gap-2   text-black p-5">
+              <h4 className="font-bold">SAAS Cinema System</h4>
+              <p className="">
+                It is a SAAS based system for different cinema to create
+                account, list their hall along with the hall seats layout and
+                movies, and users can book tickets.
+              </p>
+              <div className="flex gap-5">
+                <a
+                  href="https://github.com/GurungDev/cinema_api.git"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Backend Link
+                </a>
+
+                <a
+                  href="https://github.com/GurungDev/cinemaAdminPanel.git"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Admin Panel
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="grid gap-2   text-black p-5">
+              <h4 className="font-bold">Restaurant management System </h4>
+              <p className="">
+                It is a system for restaurant owners to manage their restaurant
+                i.e menu, tables, orders and QR payment.
+              </p>
+              <div className="flex gap-5">
+                <a
+                  href="https://github.com/GurungDev/himalayan_aroma_api.git"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Backend Link
+                </a>
+                <a
+                  href="  https://github.com/GurungDev/himalayan_aroma_adminPanel.git"
+                  className="underline text-blue-600 hover:text-blue-400"
+                >
+                  Admin Panel
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="grid gap-2   text-black p-5">
+              <h4 className="font-bold">Trip management system </h4>
+              <p className="">
+                It is a system for travelers to book flight, tours, hotels, and
+                guide.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div className="grid gap-2   text-black p-5">
+              <h4 className="font-bold">CI/CD Pipeline </h4>
+              <p className="">
+                I deployed a CI/CD pipeline on goodle cloud platform. I used
+                terraform to create the cloud infrastructure and github actions
+                to deploy the code to kubernetes cluster and build docker image.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="grid min-[1100px]:hidden app-layout"></div>
+      <div className="grid min-[1100px]:hidden app-layout">
+        <div>
+          <p className="text-center text-black">
+            I worked on several projects for sartup companies.
+          </p>
+
+          <Image
+            src="/mewaving.png"
+            width={500}
+            height={500}
+            alt="Picture of the author"
+            className=" w-[60%] m-auto"
+          />
+        </div>
+        <div className="block min-[1100px]:hidden space-y-10 px-5">
+          {projects.map((project, i) => (
+            <div
+              key={i}
+              className=" group rounded-xl  hover:scale-105 duration-500 border   bg-zinc-800 bg-opacity-10"
+            >
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <div className="    items-center py-10  w-full  ">
+                  <div className="relative h-[200px]">
+                    <Image
+                      src={project.image}
+                      fill
+                      alt={project.title}
+                      className="object-contain  "
+                    />
+                  </div>
+                  <div className="     flex flex-col justify-center items-center p-5">
+                    <h4 className="font-bold  text-center">{project.title}</h4>
+                    {project.description && (
+                      <p className="mt-2 text-center caption text-dark  ">
+                        {project.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+        <div className="mt-20">
+          <p className="text-center    text-dark">
+            I have multiple personal projects.
+          </p>
+
+          <Image
+            src="/thumbsup.png"
+            width={500}
+            height={500}
+            alt="Picture of the author"
+            className="   m-auto"
+          />
+        </div>
+      </div>
+      <div className="relative   gap-5  col-span-2  app-layout    rounded-xl grid min-[1100px]:hidden">
+        <div>
+          <div className="grid gap-2   text-black p-5">
+            <h4 className="font-bold">Pokhara Rentals - SAAS Rental System</h4>
+            <p className="">
+              It is a SAAS rental system where local stores can create their
+              account and list their products and users can rent the products.
+            </p>
+            <div className="flex gap-5">
+              <a
+                href="https://github.com/GurungDev/pokharaRental-api-v2"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Backend Link
+              </a>
+
+              <a
+                href="https://github.com/GurungDev/pokharaRentalStorePanel.git"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Store Panel
+              </a>
+
+              <a
+                href="https://github.com/GurungDev/pokharaRentalCustomerPanel.git"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Customer Panel
+              </a>
+
+              <a
+                href="https://github.com/GurungDev/pokharaRentalAdminPanel.git"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Admin Panel
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="grid gap-2   text-black p-5">
+            <h4 className="font-bold">SAAS Cinema System</h4>
+            <p className="">
+              It is a SAAS based system for different cinema to create account,
+              list their hall along with the hall seats layout and movies, and
+              users can book tickets.
+            </p>
+            <div className="flex gap-5">
+              <a
+                href="https://github.com/GurungDev/cinema_api.git"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Backend Link
+              </a>
+
+              <a
+                href="https://github.com/GurungDev/cinemaAdminPanel.git"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Admin Panel
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="grid gap-2   text-black p-5">
+            <h4 className="font-bold">Restaurant management System </h4>
+            <p className="">
+              It is a system for restaurant owners to manage their restaurant
+              i.e menu, tables, orders and QR payment.
+            </p>
+            <div className="flex gap-5">
+              <a
+                href="https://github.com/GurungDev/himalayan_aroma_api.git"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Backend Link
+              </a>
+              <a
+                href="  https://github.com/GurungDev/himalayan_aroma_adminPanel.git"
+                className="underline text-blue-600 hover:text-blue-400"
+              >
+                Admin Panel
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="grid gap-2   text-black p-5">
+            <h4 className="font-bold">Trip management system </h4>
+            <p className="">
+              It is a system for travelers to book flight, tours, hotels, and
+              guide.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div className="grid gap-2   text-black p-5">
+            <h4 className="font-bold">CI/CD Pipeline </h4>
+            <p className="">
+              I deployed a CI/CD pipeline on goodle cloud platform. I used
+              terraform to create the cloud infrastructure and github actions to
+              deploy the code to kubernetes cluster and build docker image.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

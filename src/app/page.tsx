@@ -11,20 +11,30 @@ import TechnologyUsesComponent from "@/components/technology";
 export default function Home() {
   return (
     <div>
-      <SmoothScrollWrapper>
-        
-        <LandingSection />
-        <IntroComp />
+       <SmoothScrollWrapper>
+        <div id="home">
+          <LandingSection />
+        </div>
+        <div id="about">
+          <IntroComp />
+        </div>
         <MarqueeComponent baseVelocity={-1} />
 
-        <KnowledgeComp />
-        <TechnologyUsesComponent/>
-        <ProjectComp />
-        {/* <ProjectComp /> */}
-        <CompanyLogos baseVelocity={1} />
-
-        
-        <Background />
+        <div id="services">
+          <KnowledgeComp />
+        </div>
+        <div id="services"> {/* Optionally change this id if it's meant to be different */}
+          <TechnologyUsesComponent />
+        </div>
+        <div id="projects">
+          <ProjectComp />
+        </div>
+        <div id="experience">
+          <CompanyLogos baseVelocity={1} />
+        </div>
+        <div id="contact">
+          <Background />
+        </div>
       </SmoothScrollWrapper>
     </div>
   );

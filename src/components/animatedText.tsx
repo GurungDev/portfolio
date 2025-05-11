@@ -44,7 +44,7 @@ export function AnimatedText({ text }: AnimatedTextProps) {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="h-[300px] flex items-center justify-center"
+      className="  flex items-center justify-center"
     >
       {words.map((word, index) => (
         <p key={index} className="tagline  ">

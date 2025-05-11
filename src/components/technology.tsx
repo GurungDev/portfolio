@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { AnimatedText } from "./animatedText";
+import Lottie from "lottie-react";
+import animation from "../animations/project.json";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -12,13 +14,16 @@ const TechnologyUsesComponent = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1.5, 0.2]);
   const logoScale = useTransform(scrollYProgress, [0, 1], [1.8, 0.5]);
 
-  const mobileScale = useTransform(scrollYProgress, [0.5, 1], [1.2, .8]);
+  const mobileScale = useTransform(scrollYProgress, [0.5, 1], [1.2, 0.8]);
 
   return (
     <div className="overflow-hidden">
       <div className="hidden min-[1100px]:block bg-highlight relative border-y-[10px] border-t-light  border-b-primary py-20 overflow-hidden h-[120dvh]">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]">
-          <AnimatedText text="TECHNOLOGY THAT I USE" />
+          <div>
+            <AnimatedText text="TECHNOLOGY THAT I USE" />
+            <Lottie animationData={animation} className="  w-[50%] m-auto" />
+          </div>
         </div>
 
         <motion.div
