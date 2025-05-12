@@ -42,7 +42,13 @@ const IntroComp = () => {
           <p className="text-light c4 text-4xl font-[200] ">
             Full-Stack DevOps Engineer
           </p>
-          <button className="button-1 px-4 py-2 my-6">Download Resume</button>
+          <a
+            href="/resume.pdf"
+            download
+            style={{ textDecoration: "none", color: "blue" }}
+          >
+            <button className="button-1 px-4 py-2 my-6">Download Resume</button>
+          </a>
         </div>
       </motion.div>
       <div className=" absolute top-20 right-0">

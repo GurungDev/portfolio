@@ -29,7 +29,7 @@ const ProjectComp = () => {
     },
     {
       title: "ACKRESPONSE",
-      image: "/ackresponsep.png",
+      image: "/ackresponseP.png",
       description: "",
       link: "https://www.ackresponse.com",
     },
