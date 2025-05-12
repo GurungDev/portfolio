@@ -32,7 +32,7 @@ const navItems = [
               size={20}
               className="group-hover/icon:rotate-90 duration-500 text-neutral-100"
             />
-            <div className="absolute left-[500px] transform group-hover/icon:-left-[0px] delay-1000 group-hover/icon:delay-0   top-20 w-[300px] bg-highlight px-5 py-4 rounded-md shadow-lg  duration-500">
+            <div className="absolute left-[500px] transform group-hover/icon:-left-[100px] group-hover/icon:right-[0px] delay-1000 group-hover/icon:delay-0   top-20 w-[300px] bg-highlight px-5 py-4 rounded-md shadow-lg  duration-500">
               <ul>
                 {
                   navItems.map((item, index) => (
